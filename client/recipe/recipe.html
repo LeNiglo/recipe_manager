@@ -1,0 +1,42 @@
+<template name="recipe">
+    <div class="recipe row clearfix">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th colspan="2">
+                        <blockquote>
+                            <h2>{{title}}</h2>
+                            <footer>
+                                Created by {{username}},
+                                <cite title="{{formatted createdAt}}">
+                                    {{fromNow createdAt}}
+                                </cite>
+                                {{#if private}}
+                                    <i title="Private" class="glyphicon glyphicon-lock"></i>
+                                {{else}}
+                                    <i title="Public" class="glyphicon glyphicon-globe"></i>
+                                {{/if}}
+                            </footer>
+                        </blockquote>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each ingredients}}
+                    <tr>
+                        <th>{{name}}</th>
+                        <td>{{quantity}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
+
+<template name="recipes">
+    {{#each recipes}}
+        {{> recipe}}
+    {{/each}}
+</template>

@@ -1,0 +1,39 @@
+<template name="header">
+    {{> affixNavbar}}
+
+    <header>
+        <div class="container">
+            <h1>Recipe Manager</h1>
+        </div>
+    </header>
+
+</template>
+
+<template name="affixNavbar">
+    <nav class="navbar navbar-default navbar-pusheen" role="navigation" data-spy="affix" data-offset-top="300">
+        <div class="navbar-inner container">
+            <div class="navbar-left">
+                <ul class="nav navbar-nav">
+
+                    {{> loginButtons}}
+
+                    <li>
+                        <a role="button" data-toggle="collapse" href="#newRecipeDiv"
+                           aria-expanded="false" aria-controls="newRecipe">
+                            New Recipe
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search"/>
+                </div>
+            </form>
+        </div>
+    </nav>
+</template>
+
+<template name="_loginButtonsAdditionalLoggedInDropdownActions">
+    <a class="btn btn-default btn-block" id="testLoggedIn">Test</a>
+</template>

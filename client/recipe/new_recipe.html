@@ -1,0 +1,45 @@
+<template name="newRecipe">
+    <form id="newRecipe" class="container" style="margin-top: 15px;">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-xs-10" style="padding-left: 23px;">
+                    <div class="form-group">
+                        <input type="text" name="title" id="title" class="form-control" placeholder="Title"/>
+                    </div>
+                </div>
+                <div class="col-xs-2 text-center" style="padding-right: 23px;">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="privateRecipe" name="privateRecipe"/> Private
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <input type="text" class="new-ing form-control" placeholder="Ingredient"/>
+                            </td>
+                            <td>
+                                <input type="text" class="new-qty form-control" placeholder="Quantity"/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-12 text-center">
+                    <input type="submit" class="btn btn-primary" value="Bake !"/>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4 hidden-xs hidden-sm">
+            <img src="/pusheen_cake.jpg" alt="Let's Bake !" class="img-responsive" style="margin:auto;"/>
+        </div>
+    </form>
+</template>

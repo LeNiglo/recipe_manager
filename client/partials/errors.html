@@ -1,0 +1,16 @@
+<template name="errors">
+    <div id="notifications">
+        {{#each errors}}
+            {{> error}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="error">
+    <div class="alert alert-{{level}} alert-dismissible text-center fade in" data-id="{{id}}" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{message}}
+    </div>
+</template>
