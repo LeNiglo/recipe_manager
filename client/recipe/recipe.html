@@ -6,7 +6,13 @@
                 <tr>
                     <th colspan="2">
                         <blockquote>
-                            <h2>{{title}}</h2>
+                            <h2>{{title}}
+                                <small style="display: inline;">
+                                    <a title="Share" href="#" class="share-recipe" data-id="{{_id}}">
+                                        <i class="glyphicon glyphicon-share"></i>
+                                    </a>
+                                </small>
+                            </h2>
                             <footer>
                                 Created by {{username}},
                                 <cite title="{{formatted createdAt}}">

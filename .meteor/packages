@@ -14,3 +14,5 @@ matb33:collection-hooks
 meteorhacks:kadira
 meteorhacks:kadira-debug
 momentjs:moment
+iron:router
+reactive-var

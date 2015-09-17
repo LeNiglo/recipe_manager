@@ -14,7 +14,18 @@ Template.recipe.helpers({
     fromNow: function (date) {
         return moment(date).fromNow();
     }
-})
+});
+
+Template.recipe.events({
+    "click .share-recipe": function (e) {
+        e.preventDefault();
+
+        var $this = $(e.currentTarget);
+        $('#search').val($this.data('id'));
+        getSearchReady();
+
+    }
+});
 
 Template.newRecipe.events({
 

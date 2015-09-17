@@ -12,6 +12,35 @@ Deps.autorun(function () {
     Meteor.subscribe("allRecipes", Session.get("itemsLimit"), Session.get("search"));
 });
 
+
+var lastKeyUp = null;
+timeoutKeyUp = new ReactiveVar(null);
+getSearchReady = function () {
+    var $this = $("#search");
+
+    var value = $this.val();
+
+    if (value !== '')
+        Router.go(Router.current().route.path({}, {query: "q=" + value}));
+    else
+        Router.go(Router.current().route.path({}, {}));
+
+    var newKeyUp = new Date();
+
+    if (newKeyUp - lastKeyUp < 500) {
+        clearTimeout(timeoutKeyUp.get());
+        timeoutKeyUp.set(null);
+    }
+
+    timeoutKeyUp.set(Meteor.setTimeout(function () {
+        Session.set('search', value);
+        timeoutKeyUp.set(null);
+    }, 750));
+
+
+    lastKeyUp = newKeyUp;
+};
+
 Errors = new Meteor.Collection(null);
 
 errorId = 0;
@@ -58,4 +87,8 @@ showMoreVisible = function () {
 
 };
 
-$(window).scroll(showMoreVisible);
+$(document).ready(function () {
+
+    $(window).scroll(showMoreVisible);
+
+});

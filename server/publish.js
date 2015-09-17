@@ -15,6 +15,7 @@ Meteor.publish('allRecipes', function (limit, search) {
         }, {
 
             $or: [
+                {_id: search},
                 {title: {$regex: myRegExp}},
                 {username: {$regex: myRegExp}},
                 {'ingredients.name': {$regex: myRegExp}},

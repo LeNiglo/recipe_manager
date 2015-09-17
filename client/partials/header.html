@@ -10,7 +10,7 @@
 </template>
 
 <template name="affixNavbar">
-    <nav class="navbar navbar-default navbar-pusheen" role="navigation" data-spy="affix" data-offset-top="300">
+    <nav class="navbar navbar-default navbar-pusheen" role="navigation">
         <div class="navbar-inner container">
             <div class="navbar-left">
                 <ul class="nav navbar-nav">
@@ -34,7 +34,17 @@
 <template name="search">
     <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-            <input type="text" id="search" class="form-control" placeholder="Search"/>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    {{#if isTimeoutRunning}}
+                        <i class="glyphicon glyphicon-option-horizontal"></i>
+                    {{else}}
+                        <i class="glyphicon glyphicon-ok"></i>
+                    {{/if}}
+                </span>
+                <input type="text" name="q" id="search" class="form-control" placeholder="Search"
+                       value="{{getSearchFromUrl}}"/>
+            </div>
         </div>
     </form>
 </template>

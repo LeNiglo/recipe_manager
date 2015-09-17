@@ -10,6 +10,16 @@ Template.page.events({
 
 });
 
+Template.header.events({
+
+    "click header": function () {
+        Router.go(Router.current().route.path({}, {}));
+        getSearchReady();
+        return true;
+    }
+
+});
+
 Template.errors.helpers({
     errors: function () {
         return Errors.find();
@@ -23,27 +33,26 @@ Template.error.events({
     },
 });
 
-var lastKeyUp = null;
-var timeoutKeyUp = null;
-var getSearchReady = function () {
-    var $this = $("#search");
-
-    var newKeyUp = new Date();
-
-    if (newKeyUp - lastKeyUp < 500) {
-        clearTimeout(timeoutKeyUp);
-    }
-
-    timeoutKeyUp = Meteor.setTimeout(function () {
-        Session.set('search', $this.val());
-    }, 750);
-
-
-    lastKeyUp = newKeyUp;
-}
 
 Template.search.events({
-    "keyup #search": getSearchReady()
+    "keyup #search": function () {
+        getSearchReady();
+    }
+});
+
+Template.search.helpers({
+    getSearchFromUrl: function () {
+        var param = Router.current().params.query.q;
+        if (param) {
+            Meteor.setTimeout(function () {
+                getSearchReady();
+            }, 5);
+        }
+        return param;
+    },
+    isTimeoutRunning: function () {
+        return !!timeoutKeyUp.get();
+    }
 });
 
 Template._loginButtonsAdditionalLoggedInDropdownActions.events({
@@ -51,4 +60,4 @@ Template._loginButtonsAdditionalLoggedInDropdownActions.events({
         $('#search').val(Meteor.user().username);
         getSearchReady();
     }
-})
+});
