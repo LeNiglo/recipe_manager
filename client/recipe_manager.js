@@ -87,6 +87,8 @@ showMoreVisible = function () {
 
 };
 
+Accounts.onLogin(getSearchReady);
+
 $(document).ready(function () {
 
     $(window).scroll(showMoreVisible);

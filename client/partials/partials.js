@@ -13,7 +13,7 @@ Template.page.events({
 Template.header.events({
 
     "click header": function () {
-        Router.go(Router.current().route.path({}, {}));
+        $('#search').val('');
         getSearchReady();
         return true;
     }
