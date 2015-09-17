@@ -3,7 +3,14 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 });
 
-Meteor.subscribe('allRecipes');
+Session.setDefault("recipes_increment", 5);
+Session.setDefault("search", '');
+
+Session.setDefault("itemsLimit", Session.get("recipes_increment"));
+
+Deps.autorun(function () {
+    Meteor.subscribe("allRecipes", Session.get("itemsLimit"), Session.get("search"));
+});
 
 Errors = new Meteor.Collection(null);
 
@@ -31,3 +38,24 @@ throwError = function (message, level, timeout) {
     return false;
 
 };
+
+showMoreVisible = function () {
+    var threshold, target = $("#showMoreRecipes");
+    if (!target.length) return;
+
+    threshold = $(window).scrollTop() + $(window).height() - target.height();
+
+    if (target.offset().top < threshold) {
+        if (!target.data("visible")) {
+            target.data("visible", true);
+            Session.set("itemsLimit", Session.get("itemsLimit") + Session.get("recipes_increment"));
+        }
+    } else {
+        if (target.data("visible")) {
+            target.data("visible", false);
+        }
+    }
+
+};
+
+$(window).scroll(showMoreVisible);

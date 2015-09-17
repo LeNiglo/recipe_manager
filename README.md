@@ -12,8 +12,10 @@ This is a communal platform, feel free to join !  :3
 - [X] Basic New Recipe (title, ingredients, quantity, privacy)
 - [X] Publications
 - [X] Basic Security (insert, remove, update server side)
-- [ ] Search
-- [ ] Infinite scroll (with pagination)
+- [X] Search
+- [X] Infinite scroll (with pagination)
 - [ ] Delete Recipe
 - [ ] Update Recipe
-- [ ] Advanced Recipe (commentary, picture)
+- [ ] Advanced Recipe I (commentary)
+- [ ] Advanced Recipe I (picture)
+- [ ] Advanced Tests (with a lot of datas)

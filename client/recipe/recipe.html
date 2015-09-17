@@ -39,4 +39,9 @@
     {{#each recipes}}
         {{> recipe}}
     {{/each}}
+    {{#if moreRecipes}}
+        <div id="showMoreRecipes">
+            <p class="text-center loading">Loading ...</p>
+        </div>
+    {{/if}}
 </template>

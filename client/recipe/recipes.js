@@ -1,6 +1,9 @@
 Template.recipes.helpers({
     recipes: function () {
-        return Recipe.find();
+        return Recipe.find({}, {sort: {createdAt: -1}});
+    },
+    moreRecipes: function () {
+        return !(Recipe.find().count() < Session.get('itemsLimit'));
     }
 });
 
@@ -25,7 +28,7 @@ Template.newRecipe.events({
             return false;
         }
 
-        var $this = $(e.target);
+        var $this = $(e.currentTarget);
 
         var obj = {};
 
@@ -40,12 +43,13 @@ Template.newRecipe.events({
             tmp.name = $(this).find('input.new-ing').val();
             tmp.quantity = $(this).find('input.new-qty').val();
 
-            if (tmp.name !== '' && tmp.quantity !== '') {
+            if (tmp.name !== '') {
                 obj.ingredients.push(tmp);
             }
 
         });
 
+        console.log(obj);
         if (!Recipe.insert(obj)) {
             throwError("Baking failed, please try again or reload this page", "warning");
         }
@@ -56,7 +60,7 @@ Template.newRecipe.events({
     },
 
     "reset #newRecipe": function (e) {
-        var $this = $(e.target);
+        var $this = $(e.currentTarget);
 
         $this.find('tr').each(function () {
 
@@ -70,7 +74,7 @@ Template.newRecipe.events({
     },
 
     "change .new-ing": function (e) {
-        var $this = $(e.target);
+        var $this = $(e.currentTarget);
         var $form = $('#newRecipe');
 
         if ($this.val() === '') {

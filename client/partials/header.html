@@ -25,15 +25,20 @@
                     </li>
                 </ul>
             </div>
-            <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search"/>
-                </div>
-            </form>
+
+            {{> search}}
         </div>
     </nav>
 </template>
 
+<template name="search">
+    <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+            <input type="text" id="search" class="form-control" placeholder="Search"/>
+        </div>
+    </form>
+</template>
+
 <template name="_loginButtonsAdditionalLoggedInDropdownActions">
-    <a class="btn btn-default btn-block" id="testLoggedIn">Test</a>
+    <a class="btn btn-default btn-block" id="onlyMyRecipes">My Recipes</a>
 </template>

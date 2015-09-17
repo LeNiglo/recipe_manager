@@ -1,9 +1,24 @@
-Meteor.publish('allRecipes', function () {
+Meteor.publish('allRecipes', function (limit, search) {
+    var myRegExp = new RegExp(".*", "i");
+
+    if (search && search !== '')
+        myRegExp = new RegExp(".*" + search + ".*", "i");
+
     return Recipe.find({
-        $or: [{
-            private: false
-        }, {
-            owner: Meteor.userId
+        $and: [{
+
+            $or: [
+                {private: false},
+                {owner: this.userId}
+            ],
+
+            $or: [
+                {title: {$regex: myRegExp}},
+                {username: {$regex: myRegExp}},
+                {'ingredients.name': {$regex: myRegExp}},
+            ]
+
         }]
-    });
+    }, {sort: {createdAt: -1}, limit: limit});
+
 });
