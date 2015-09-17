@@ -10,7 +10,9 @@ Meteor.publish('allRecipes', function (limit, search) {
             $or: [
                 {private: false},
                 {owner: this.userId}
-            ],
+            ]
+
+        }, {
 
             $or: [
                 {title: {$regex: myRegExp}},
