@@ -4,13 +4,13 @@
             <div class="row">
                 <div class="col-xs-10" style="padding-left: 23px;">
                     <div class="form-group">
-                        <input type="text" name="title" id="title" class="form-control" placeholder="Title"/>
+                        <input type="text" name="title" id="title" class="form-control" placeholder='{{_ "title"}}'/>
                     </div>
                 </div>
                 <div class="col-xs-2 text-center" style="padding-right: 23px;">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="privateRecipe" name="privateRecipe"/> Private
+                            <input type="checkbox" id="privateRecipe" name="privateRecipe"/> {{_ "private"}}
                         </label>
                     </div>
                 </div>
@@ -23,23 +23,23 @@
                         <tbody>
                         <tr>
                             <td>
-                                <input type="text" class="new-ing form-control" placeholder="Ingredient"/>
+                                <input type="text" class="new-ing form-control" placeholder='{{_ "ingredient"}}'/>
                             </td>
                             <td>
-                                <input type="text" class="new-qty form-control" placeholder="Quantity"/>
+                                <input type="text" class="new-qty form-control" placeholder='{{_ "quantity"}}'/>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="col-md-12 text-center">
-                    <input type="submit" class="btn btn-primary" value="Bake !"/>
+                    <input type="submit" class="btn btn-primary" value='{{_ "bake"}}'/>
                 </div>
 
             </div>
         </div>
         <div class="col-md-4 hidden-xs hidden-sm">
-            <img src="/pusheen_cake.jpg" alt="Let's Bake !" class="img-responsive" style="margin:auto;"/>
+            <img src="/pusheen_cake.jpg" alt='{{_ "lets_bake"}}' class="img-responsive" style="margin:auto;"/>
         </div>
     </form>
 </template>

@@ -1,0 +1,23 @@
+{
+  "website_title": "Recipe Manager",
+  "new_recipe": "New Recipe",
+  "search": "Search",
+  "my_recipes": "My Recipes",
+  "realized_by": "Realised by",
+  "created_by": "Created by",
+  "dont_own": "I don't own any visuals, they belong to",
+  "and_font": "and font belongs to",
+  "title": "Title",
+  "private": "Private",
+  "public": "Public",
+  "ingredient": "Ingredient",
+  "ingredient_plural": "Ingredients",
+  "quantity": "Quantity",
+  "bake": "Bake !",
+  "lets_bake": "Let's Bake !",
+  "insert_failed": "Baking failed, please try again or reload this page",
+  "login_please": "Please, Sign In or Join first",
+  "loading": "Loading ...",
+  "share": "Share",
+  "switch_locale": "Changer pour FR <img src='/fr.png' height='12' alt='FR' />"
+}

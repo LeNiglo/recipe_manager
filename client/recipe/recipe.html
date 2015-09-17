@@ -8,20 +8,20 @@
                         <blockquote>
                             <h2>{{title}}
                                 <small style="display: inline;">
-                                    <a title="Share" href="#" class="share-recipe" data-id="{{_id}}">
+                                    <a title='{{_ "share"}}' href="#" class="share-recipe" data-id="{{_id}}">
                                         <i class="glyphicon glyphicon-share"></i>
                                     </a>
                                 </small>
                             </h2>
                             <footer>
-                                Created by {{username}},
-                                <cite title="{{formatted createdAt}}">
-                                    {{fromNow createdAt}}
+                                {{_ "created_by"}} {{username}},
+                                <cite title="{{moFormat createdAt 'dddd, MMMM Do YYYY, HH:mm:ss'}}">
+                                    {{moFromNow createdAt}}
                                 </cite>
                                 {{#if private}}
-                                    <i title="Private" class="glyphicon glyphicon-lock"></i>
+                                    <i title='{{_ "private"}}' class="glyphicon glyphicon-lock"></i>
                                 {{else}}
-                                    <i title="Public" class="glyphicon glyphicon-globe"></i>
+                                    <i title='{{_ "public"}}' class="glyphicon glyphicon-globe"></i>
                                 {{/if}}
                             </footer>
                         </blockquote>
@@ -47,7 +47,7 @@
     {{/each}}
     {{#if moreRecipes}}
         <div id="showMoreRecipes">
-            <p class="text-center loading">Loading ...</p>
+            <p class="text-center loading">{{_ "loading"}}</p>
         </div>
     {{/if}}
 </template>

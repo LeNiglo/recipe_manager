@@ -13,6 +13,8 @@ email
 matb33:collection-hooks
 meteorhacks:kadira
 meteorhacks:kadira-debug
-momentjs:moment
 iron:router
 reactive-var
+tap:i18n
+lbee:moment-helpers
+momentjs:moment

@@ -7,15 +7,6 @@ Template.recipes.helpers({
     }
 });
 
-Template.recipe.helpers({
-    formatted: function (date) {
-        return moment(date).format("dddd, MMMM Do YYYY, HH:mm:ss");
-    },
-    fromNow: function (date) {
-        return moment(date).fromNow();
-    }
-});
-
 Template.recipe.events({
     "click .share-recipe": function (e) {
         e.preventDefault();
@@ -34,7 +25,7 @@ Template.newRecipe.events({
 
         if (!Meteor.userId()) {
             $('#login-dropdown-list').addClass('open');
-            throwError("Please, Sign In or Join first", "danger", 7000);
+            throwError(TAPi18n._("login_please"), "danger", 7000);
             $('#login-username-or-email').focus();
             return false;
         }
@@ -62,7 +53,7 @@ Template.newRecipe.events({
 
         console.log(obj);
         if (!Recipe.insert(obj)) {
-            throwError("Baking failed, please try again or reload this page", "warning");
+            throwError(TAPi18n._("insert_failed"), "warning");
         }
 
         $this.trigger('reset');
@@ -120,9 +111,9 @@ Template.newRecipe.events({
                 return false;
             } else {
                 var str = '<tr><td>' +
-                    '<input type="text" class="new-ing form-control" placeholder="Ingredient"/>' +
+                    '<input type="text" class="new-ing form-control" placeholder="' + TAPi18n.__("ingredient") + '"/>' +
                     '</td><td>' +
-                    '<input type="text" class="new-qty form-control" placeholder="Quantity"/>' +
+                    '<input type="text" class="new-qty form-control" placeholder="' + TAPi18n.__("quantity") + '"/>' +
                     '</td></tr>';
 
                 $form.find('tbody').append(str);

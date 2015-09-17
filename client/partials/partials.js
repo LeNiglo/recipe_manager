@@ -59,5 +59,8 @@ Template._loginButtonsAdditionalLoggedInDropdownActions.events({
     "click #onlyMyRecipes": function (e) {
         $('#search').val(Meteor.user().username);
         getSearchReady();
+    },
+    "click #changeLocale": function () {
+        Meteor.call('changeLocale', Meteor.user().profile.locale === 'fr' ? 'en' : 'fr');
     }
 });

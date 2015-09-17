@@ -12,6 +12,14 @@ Deps.autorun(function () {
     Meteor.subscribe("allRecipes", Session.get("itemsLimit"), Session.get("search"));
 });
 
+Deps.autorun(function () {
+
+    var locale = (Meteor.user() && Meteor.user().profile.locale) ? Meteor.user().profile.locale : 'en';
+
+    mo.setLocale(locale);
+    accountsUIBootstrap3.setLanguage(locale);
+    TAPi18n.setLanguage(locale);
+});
 
 var lastKeyUp = null;
 timeoutKeyUp = new ReactiveVar(null);
@@ -20,10 +28,14 @@ getSearchReady = function () {
 
     var value = $this.val();
 
-    if (value !== '')
-        Router.go(Router.current().route.path({}, {query: "q=" + value}));
-    else
-        Router.go(Router.current().route.path({}, {}));
+    if (Router.current().route) {
+
+        if (value !== '')
+            Router.go(Router.current().route.path({}, {query: "q=" + value}));
+        else
+            Router.go(Router.current().route.path({}, {}));
+
+    }
 
     var newKeyUp = new Date();
 
@@ -90,7 +102,5 @@ showMoreVisible = function () {
 Accounts.onLogin(getSearchReady);
 
 $(document).ready(function () {
-
     $(window).scroll(showMoreVisible);
-
 });

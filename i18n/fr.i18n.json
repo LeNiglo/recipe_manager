@@ -1,0 +1,23 @@
+{
+  "website_title": "Le Gestionnaire de Recettes",
+  "new_recipe": "Nouvelle Recette",
+  "search": "Recherche",
+  "my_recipes": "Mes Recettes",
+  "realized_by": "Réalisé par",
+  "created_by": "Créée par",
+  "dont_own": "Je ne possède aucun visuels, ils appartiennent à",
+  "and_font": "et la police appartient à",
+  "title": "Titre",
+  "private": "Privée",
+  "public": "Publique",
+  "ingredient": "Ingrédient",
+  "ingredient_plural": "Ingrédients",
+  "quantity": "Quantité",
+  "bake": "Au four !",
+  "lets_bake": "Let's Bake !",
+  "insert_failed": "La cuisson a échoué, veuillez réessayer ou recharger la page",
+  "login_please": "Veuillez vous connecter ou vous inscire d'abord",
+  "loading": "Chargement ...",
+  "share": "Partager",
+  "switch_locale": "Switch to EN <img src='/en.png' height='12' alt='EN' />"
+}

@@ -3,7 +3,7 @@
 
     <header>
         <div class="container">
-            <h1>Recipe Manager</h1>
+            <h1>{{_ "website_title"}}</h1>
         </div>
     </header>
 
@@ -20,7 +20,7 @@
                     <li>
                         <a role="button" data-toggle="collapse" href="#newRecipeDiv"
                            aria-expanded="false" aria-controls="newRecipe">
-                            New Recipe
+                            {{_ "new_recipe"}}
                         </a>
                     </li>
                 </ul>
@@ -42,7 +42,7 @@
                         <i class="glyphicon glyphicon-ok"></i>
                     {{/if}}
                 </span>
-                <input type="text" name="q" id="search" class="form-control" placeholder="Search"
+                <input type="text" name="q" id="search" class="form-control" placeholder='{{_ "search"}}'
                        value="{{getSearchFromUrl}}"/>
             </div>
         </div>
@@ -50,5 +50,8 @@
 </template>
 
 <template name="_loginButtonsAdditionalLoggedInDropdownActions">
-    <a class="btn btn-default btn-block" id="onlyMyRecipes">My Recipes</a>
+    <a class="btn btn-default btn-block" id="onlyMyRecipes">{{_ "my_recipes"}}</a>
+    <a class="btn btn-default btn-block" id="changeLocale">
+        {{{_ "switch_locale"}}}
+    </a>
 </template>
