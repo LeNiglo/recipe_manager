@@ -4,7 +4,7 @@ sudo meteor build .
 sudo mv recipe_manager.tar.gz /opt/recipe_manager/.
 cd /opt/recipe_manager/
 sudo rm -rf bundle/
-sudo tar -xvzf recipe_manager.tar.gz
+sudo tar -xzf recipe_manager.tar.gz
 sudo rm -f recipe_manager.tar.gz
 cd bundle/programs/server/
 sudo npm install
