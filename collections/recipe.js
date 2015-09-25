@@ -10,8 +10,7 @@ Recipe.allow({
     },
     remove: function (userId, doc) {
         return doc.owner === userId;
-    },
-    fetch: ['owner']
+    }
 });
 
 Recipe.before.insert(function (userId, it) {

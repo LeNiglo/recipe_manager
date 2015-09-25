@@ -100,12 +100,9 @@ showMoreVisible = function () {
 
     threshold = $(window).scrollTop() + $(window).height() - target.height();
 
-    console.log(threshold);
-
     if (target.offset().top < threshold) {
         if (!target.data("visible")) {
             target.data("visible", true);
-            console.log("Load more");
             Session.set("itemsLimit", Session.get("itemsLimit") + Session.get("recipes_increment"));
         }
     } else {

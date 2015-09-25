@@ -23,5 +23,6 @@
   "edit": "Edit",
   "remove": "Remove",
   "switch_locale": "Changer pour FR <img src='/lang/fr.png' height='12' alt='FR' />",
-  "confirm_remove": "You are about to remove your recipe, are you sure ?"
+  "confirm_remove": "You are about to remove your recipe, are you sure ?",
+  "nothing_to_show": "No recipe here. Create yours !"
 }

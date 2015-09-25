@@ -10,6 +10,14 @@ Template.page.events({
 
 });
 
+Template.page.helpers({
+
+    hasRecipes: function () {
+        return Recipe.find().count() > 0;
+    }
+
+});
+
 Template.header.events({
 
     "click h1": function (e) {

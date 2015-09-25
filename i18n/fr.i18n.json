@@ -23,5 +23,6 @@
   "edit": "Editer",
   "remove": "Supprimer",
   "switch_locale": "Switch to EN <img src='/lang/en.png' height='12' alt='EN' />",
-  "confirm_remove": "Vous êtes sur le point de supprimer votre recette, êtes-vous sûr ?"
+  "confirm_remove": "Vous êtes sur le point de supprimer votre recette, êtes-vous sûr ?",
+  "nothing_to_show": "Aucune recette trouvée. Créez la votre !"
 }
