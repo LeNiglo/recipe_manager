@@ -1,0 +1,146 @@
+@pusheen: #FBF0E3;
+@pink: #EE7CB8;
+@brown: #4A280C;
+@pusheen-darken: darken(@pusheen, 50%);
+@light-grey: #777;
+@grey: #EEE;
+
+@import "selection-color.import.less";
+@import "buttons.import.less";
+
+.recipe {
+  padding: 20px 7px 8px 7px;
+
+  .action-recipe {
+    display: inline-block;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 0s, opacity 0.5s linear;
+    -moz-transition: visibility 0s, opacity 0.5s linear;
+    -ms-transition: visibility 0s, opacity 0.5s linear;
+    -o-transition: visibility 0s, opacity 0.5s linear;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+
+  &:hover {
+    .action-recipe {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  pre {
+    font-family: Verdana, Arial;
+    background: none;
+    border: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+}
+
+a {
+
+  outline: 0 !important;
+  text-decoration: none !important;
+
+  &.share-recipe {
+    color: @pink !important;
+  }
+
+  &.edit-recipe {
+    color: @pusheen-darken !important;
+  }
+
+  &.remove-recipe {
+    color: @brown !important;
+  }
+
+}
+
+header {
+  height: 300px;
+  display: table !important;
+  width: 100%;
+
+  background-image: url('/pusheen_back.png');
+
+  .container {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+
+    h1 {
+      font-size: 62px;
+      font-family: "Waltograph", "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
+      display: inline-block;
+      color: @pink;
+    }
+  }
+}
+
+nav {
+
+  position: absolute !important;
+  top: 300px;
+  width: 100%;
+  z-index: 10;
+
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+
+  &.affix {
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+  }
+
+  &.navbar-pusheen {
+    background-color: @pusheen;
+    border-top: none;
+    border-color: @pusheen; /* @pusheen-darken; */
+  }
+
+  i.glyphicon {
+    color: @pink;
+  }
+}
+
+footer {
+  a {
+    color: @light-grey !important;
+  }
+}
+
+#page {
+  background-color: white;
+  padding-top: 56px;
+  padding-bottom: 7px;
+  border-left: 1px solid @grey;
+  border-right: 1px solid @grey;
+}
+
+#notifications {
+  position: fixed;
+  top: 200px;
+  left: 200px;
+  right: 200px;
+  z-index: 11;
+}
+
+cite {
+  cursor: help;
+}
+
+body {
+  background-color: @pusheen;
+}
+
+@font-face {
+  font-family: Waltograph;
+  src: url("/waltograph42.otf") format("opentype");
+}

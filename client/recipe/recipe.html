@@ -8,9 +8,19 @@
                         <blockquote>
                             <h2>{{title}}
                                 <small style="display: inline;">
-                                    <a title='{{_ "share"}}' href="#" class="share-recipe" data-id="{{_id}}">
-                                        <i class="glyphicon glyphicon-share"></i>
-                                    </a>
+                                    {{#unless private}}
+                                        <a title='{{_ "share"}}' href="#" class="share-recipe" data-id="{{_id}}">
+                                            <i class="glyphicon glyphicon-share"></i>
+                                        </a>
+                                    {{/unless}}
+                                    {{#if isMine owner}}
+                                        <a title='{{_ "edit"}}' href="#" class="edit-recipe action-recipe" data-id="{{_id}}">
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                        </a>
+                                        <a title='{{_ "remove"}}' href="#" class="remove-recipe action-recipe" data-id="{{_id}}">
+                                            <i class="glyphicon glyphicon-remove"></i>
+                                        </a>
+                                    {{/if}}
                                 </small>
                             </h2>
                             <footer>
@@ -36,6 +46,19 @@
                     </tr>
                 {{/each}}
                 </tbody>
+                {{#if resume}}
+                    <tfoot>
+                    <tr>
+                        <th colspan="2">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+                                    <pre>{{resume}}</pre>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                    </tfoot>
+                {{/if}}
             </table>
         </div>
     </div>

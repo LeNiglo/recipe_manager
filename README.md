@@ -14,9 +14,10 @@ This is a communal platform, feel free to join !  :3
 - [X] Basic Security (insert, remove, update server side)
 - [X] Search
 - [X] Infinite scroll (with pagination)
+- [X] Share via URL (only public)
 - [ ] Delete Recipe
 - [ ] Update Recipe
 - [ ] Advanced Recipe I (commentary)
-- [ ] Advanced Recipe I (picture)
+- [ ] Advanced Recipe II (picture)
 - [ ] Advanced Tests (with a lot of datas)
 - [x] i18n (EN, FR)

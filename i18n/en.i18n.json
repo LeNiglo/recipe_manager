@@ -12,6 +12,7 @@
   "public": "Public",
   "ingredient": "Ingredient",
   "ingredient_plural": "Ingredients",
+  "resume": "Details",
   "quantity": "Quantity",
   "bake": "Bake !",
   "lets_bake": "Let's Bake !",
@@ -19,5 +20,8 @@
   "login_please": "Please, Sign In or Join first",
   "loading": "Loading ...",
   "share": "Share",
-  "switch_locale": "Changer pour FR <img src='/fr.png' height='12' alt='FR' />"
+  "edit": "Edit",
+  "remove": "Remove",
+  "switch_locale": "Changer pour FR <img src='/lang/fr.png' height='12' alt='FR' />",
+  "confirm_remove": "You are about to remove your recipe, are you sure ?"
 }

@@ -12,6 +12,12 @@ Template.page.events({
 
 Template.header.events({
 
+    "click h1": function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    },
+
     "click header": function () {
         $('#search').val('');
         getSearchReady();
@@ -19,6 +25,11 @@ Template.header.events({
     }
 
 });
+
+Template.header.rendered = function () {
+    $('nav.navbar').affix({offset: {top: 300}});
+    $(window).scroll(showMoreVisible);
+};
 
 Template.errors.helpers({
     errors: function () {

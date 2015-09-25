@@ -1,7 +1,21 @@
 Accounts.ui.config({
     requestPermissions: {},
-    passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
+    passwordSignupFields: 'USERNAME_AND_EMAIL'
 });
+
+Template.page.created = function () {
+    if (Accounts._verifyEmailToken) {
+        Accounts.verifyEmail(Accounts._verifyEmailToken, function (err) {
+            if (err != null) {
+                if (err.message = 'Verify email link expired [403]') {
+                    console.log('Sorry this verification link has expired.')
+                }
+            } else {
+                console.log('Thank you! Your email address has been confirmed.')
+            }
+        });
+    }
+};
 
 Session.setDefault("recipes_increment", 5);
 Session.setDefault("search", '');
@@ -28,9 +42,9 @@ getSearchReady = function () {
 
     var value = $this.val();
 
-    if (Router.current().route) {
+    if (Router.current()) {
 
-        if (value !== '')
+        if (value && value !== '')
             Router.go(Router.current().route.path({}, {query: "q=" + value}));
         else
             Router.go(Router.current().route.path({}, {}));
@@ -86,9 +100,12 @@ showMoreVisible = function () {
 
     threshold = $(window).scrollTop() + $(window).height() - target.height();
 
+    console.log(threshold);
+
     if (target.offset().top < threshold) {
         if (!target.data("visible")) {
             target.data("visible", true);
+            console.log("Load more");
             Session.set("itemsLimit", Session.get("itemsLimit") + Session.get("recipes_increment"));
         }
     } else {
@@ -100,7 +117,3 @@ showMoreVisible = function () {
 };
 
 Accounts.onLogin(getSearchReady);
-
-$(document).ready(function () {
-    $(window).scroll(showMoreVisible);
-});

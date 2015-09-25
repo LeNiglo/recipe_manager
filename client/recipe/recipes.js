@@ -1,9 +1,18 @@
 Template.recipes.helpers({
     recipes: function () {
+        if (Recipe.find().count() === 1) {
+            $("html, body").animate({scrollTop: 300}, 250);
+        }
         return Recipe.find({}, {sort: {createdAt: -1}});
     },
     moreRecipes: function () {
         return !(Recipe.find().count() < Session.get('itemsLimit'));
+    }
+});
+
+Template.recipe.helpers({
+    isMine: function (_id) {
+        return (Meteor.userId() === _id);
     }
 });
 
@@ -15,6 +24,56 @@ Template.recipe.events({
         $('#search').val($this.data('id'));
         getSearchReady();
 
+    },
+
+    "click .edit-recipe": function (e) {
+        e.preventDefault();
+
+        var $this = $(e.currentTarget);
+        var recipe = Recipe.findOne({_id: $this.data('id')});
+
+        var $form = $('#newRecipe').trigger('reset');
+        $form.find('input[name="title"]').val(recipe.title);
+        $form.find('textarea[name="resume"]').val(recipe.resume);
+        $("#privateRecipe").attr('checked', recipe.private);
+
+        recipe.ingredients.forEach(function (pair) {
+            $form.find('tr').each(function () {
+                var $inputIng = $(this).find('input.new-ing');
+                var $inputQty = $(this).find('input.new-qty');
+
+                if ($inputIng.val() === '') {
+                    $inputIng.val(pair.name).trigger('change');
+                    $inputQty.val(pair.quantity);
+                    return false;
+                }
+            });
+        });
+
+
+        Meteor.setTimeout(function () {
+            $('#collapse-newRecipe').myCollapse(true);
+            $form.find('button[type="submit"]').myButton(recipe._id);
+        }, 100);
+    },
+
+    "click .remove-recipe": function (e) {
+        e.preventDefault();
+
+        var $this = $(e.currentTarget);
+        if (confirm(TAPi18n.__("confirm_remove"))) {
+
+            Recipe.remove({_id: $this.data('id')}, function (err, res) {
+                if (err || !res) {
+                    return throwError(err.reason, "danger");
+                }
+            });
+
+        } else {
+            return false;
+        }
+
+
     }
 });
 
@@ -25,16 +84,18 @@ Template.newRecipe.events({
 
         if (!Meteor.userId()) {
             $('#login-dropdown-list').addClass('open');
-            throwError(TAPi18n._("login_please"), "danger", 7000);
+            throwError(TAPi18n.__("login_please"), "danger", 7000);
             $('#login-username-or-email').focus();
             return false;
         }
 
         var $this = $(e.currentTarget);
+        var $submit = $this.find('button[type="submit"]');
 
         var obj = {};
 
         obj.title = $this.find('input[name="title"]').val();
+        obj.resume = $this.find('textarea[name="resume"]').val();
         obj.private = $("#privateRecipe").is(":checked");
         obj.ingredients = [];
 
@@ -51,9 +112,25 @@ Template.newRecipe.events({
 
         });
 
-        console.log(obj);
-        if (!Recipe.insert(obj)) {
-            throwError(TAPi18n._("insert_failed"), "warning");
+        if (!$submit.hasClass('to-edit')) {
+
+            if (!Recipe.insert(obj)) {
+                return throwError(TAPi18n.__("insert_failed"), "warning");
+            }
+
+        } else {
+
+            var idEdit = $submit.data('id-edit');
+            Recipe.update({
+                _id: idEdit
+            }, {
+                $set: obj
+            }, function (err, res) {
+                if (err || !res) {
+                    return throwError(err.reason, "danger");
+                }
+            });
+
         }
 
         $this.trigger('reset');
@@ -64,6 +141,9 @@ Template.newRecipe.events({
     "reset #newRecipe": function (e) {
         var $this = $(e.currentTarget);
 
+        // Fake Collapse plugin using Meteor's jQuery & bootstrap.js
+        $('#collapse-newRecipe').myCollapse(false, 50);
+
         $this.find('tr').each(function () {
 
             if ($(this).next('tr').length !== 0) {
@@ -73,6 +153,7 @@ Template.newRecipe.events({
             }
 
         });
+
     },
 
     "change .new-ing": function (e) {
