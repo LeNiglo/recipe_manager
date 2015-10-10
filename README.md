@@ -2,7 +2,7 @@
 
 It's a Meteor Application to manage your Recipes (Ingredients and Quantity).
 
-This is a communal platform, feel free to join !  :3  
+This is a communal platform, feel free to join at http://recipe.lefrantguillaume.com !  :3  
 
 # Let's Bake !
 
@@ -18,6 +18,4 @@ This is a communal platform, feel free to join !  :3
 - [X] Delete Recipe
 - [X] Update Recipe
 - [X] Advanced Recipe I (commentary)
-- [ ] Advanced Recipe II (picture)
-- [ ] Advanced Tests (with a lot of datas)
-- [x] i18n (EN, FR)
+- [X] i18n (EN, FR)
