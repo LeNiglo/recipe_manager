@@ -15,9 +15,9 @@ This is a communal platform, feel free to join !  :3
 - [X] Search
 - [X] Infinite scroll (with pagination)
 - [X] Share via URL (only public)
-- [ ] Delete Recipe
-- [ ] Update Recipe
-- [ ] Advanced Recipe I (commentary)
+- [X] Delete Recipe
+- [X] Update Recipe
+- [X] Advanced Recipe I (commentary)
 - [ ] Advanced Recipe II (picture)
 - [ ] Advanced Tests (with a lot of datas)
 - [x] i18n (EN, FR)
