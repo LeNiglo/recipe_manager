@@ -3,3 +3,4 @@ recipe_manager.iml
 .meteor/meteorite
 .idea
 server/kadira.js
+node_modules/

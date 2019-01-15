@@ -1,0 +1,27 @@
+{
+  "name": "recipe_manager",
+  "version": "1.0.0",
+  "description": "It's a Meteor Application to manage your Recipes (Ingredients and Quantity).",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.2.0",
+    "bcrypt": "^3.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeNiglo/recipe_manager.git"
+  },
+  "author": "LeNiglo <lefrantguillaume@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LeNiglo/recipe_manager/issues"
+  },
+  "homepage": "https://github.com/LeNiglo/recipe_manager#readme"
+}
