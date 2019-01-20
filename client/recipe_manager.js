@@ -27,7 +27,6 @@ Deps.autorun(function () {
 });
 
 Deps.autorun(function () {
-
     var locale = (Meteor.user() && Meteor.user().profile.locale) ? Meteor.user().profile.locale : 'en';
 
     mo.setLocale(locale);
@@ -43,12 +42,11 @@ getSearchReady = function () {
     var value = $this.val();
 
     if (Router.current()) {
-
-        if (value && value !== '')
+        if (value && value !== '') {
             Router.go(Router.current().route.path({}, {query: "q=" + value}));
-        else
+        } else {
             Router.go(Router.current().route.path({}, {}));
-
+        }
     }
 
     var newKeyUp = new Date();
@@ -63,7 +61,6 @@ getSearchReady = function () {
         timeoutKeyUp.set(null);
     }, 750));
 
-
     lastKeyUp = newKeyUp;
 };
 
@@ -72,7 +69,6 @@ Errors = new Meteor.Collection(null);
 errorId = 0;
 
 throwError = function (message, level, timeout) {
-
     var savedId = ++errorId;
 
     Errors.insert({
@@ -91,7 +87,6 @@ throwError = function (message, level, timeout) {
     }
 
     return false;
-
 };
 
 showMoreVisible = function () {
@@ -110,7 +105,6 @@ showMoreVisible = function () {
             target.data("visible", false);
         }
     }
-
 };
 
 Accounts.onLogin(getSearchReady);
